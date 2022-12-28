@@ -1,7 +1,7 @@
 # Build from hanwckf repo
 # BY: TurBoTse
 
-name: Build from hanwckf repo
+name: Build from padavan
 
 on: 
   workflow_dispatch:
@@ -65,10 +65,46 @@ jobs:
           if [ -d hanwckf/scripts ]; then cp -f hanwckf/scripts/* $work_dir; fi
           cd $config_dir
           for m in $targets; do if [ -f $m.config ]; then \
+          ##科学上网##
+          echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> $m.config #科学上网插件，选择n后全部有关插件都不集成
+          echo "CONFIG_FIRMWARE_INCLUDE_XRAY=n" >> $m.config #集成xray执行文件  ~4.5M
+          echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> $m.config #集成v2ray执行文件
+          echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> $m.config #集成trojan执行文件  ~1.2M
+          echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> $m.config #simple-obfs混淆插件
+          echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=n" >> $m.config #SS server
+          echo "CONFIG_FIRMWARE_INCLUDE_KUMASOCKS=n" >> $m.config #socks5
+          echo "CONFIG_FIRMWARE_INCLUDE_IPT2SOCKS=n" >> $m.config
+          echo "CONFIG_FIRMWARE_INCLUDE_MICROSOCKS=n" >> $m.config
+          echo "CONFIG_FIRMWARE_INCLUDE_NPC=n" >> $m.config #npc
+          ##广告管理##
+          echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >> $m.config #adbyby plus+
+          echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >> $m.config #KP广告过滤
+          ##DNS服务##
+          echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> $m.config #smartdns
+          echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> $m.config #smartdns二进制文件
+          echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> $m.config #adg DNS去AD
+          echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> $m.config #DNSFORWARDER
+          echo "CONFIG_FIRMWARE_INCLUDE_CLOUDFLAREDDNS=n" >> $m.config #CLOUDFLAREDDNS
+          echo "CONFIG_FIRMWARE_INCLUDE_NVPPROXY=n" >> $m.config #NVPPROXY
+          ##文件管理##
+          echo "CONFIG_FIRMWARE_INCLUDE_CADDY=n" >> $m.config #在线文件管理服务
+          echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >> $m.config #集成caddu执行文件，此文件有13M,请注意固件大小
+          ##音乐解锁##
+          echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> $m.config #网易云解锁
+          echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> $m.config #网易云解锁GO版本执行文件（2M多）注意固件超大小
+          ##内网穿透服务##
+          echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> $m.config #zerotier ~1.3M
+          echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> $m.config #aliddns
+          echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=n" >> $m.config #ddnsto  ~0.5M
+          echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=n" >> $m.config  #ALDRIVER  ~3m
+          echo "CONFIG_FIRMWARE_INCLUDE_SQM=n" >> $m.config #SQM
+          echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=n" >>.config #wireguard 10k
+          echo "CONFIG_FIRMWARE_INCLUDE_FRPS=y" >> $m.config #内网穿透frps
+          echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> $m.config #内网穿透frpc
           for MOD in UFSD FAT EXFAT EXT2 EXT3 EXT4 XFS FUSE SWAP; do
               sed -i "s/CONFIG_FIRMWARE_ENABLE_${MOD}=y/CONFIG_FIRMWARE_ENABLE_${MOD}=n/" $m.config; done; \
-          for MOD in TCPDUMP EAP_PEAP HTTPS OPENSSH OPENSSL_EC XUPNPD CURL NAPT66 VLMCSD HTOP LRZSZ SOCAT FRPC FRPS ALIDDNS; do
-              sed -i "s/CONFIG_FIRMWARE_INCLUDE_${MOD}=n/CONFIG_FIRMWARE_INCLUDE_${MOD}=y/" $m.config; done; \
+          for MOD in UVC SERIAL AUDIO LPRD U2EC HDPARM PARTED SMBD FTPD ARIA ARIA_WEB_CONTROL DUMP1090 RTL_SDR HID XFRM QOS IMQ IFB IPSET NFSD NFSC CIFS NTFS_3G TCPDUMP SMBD36 WINS SMBD_SYSLOG RPL2TP EAP_PEAP HTTPS SFTP DROPBEAR DROPBEAR_FAST_CODE OPENSSH OPENVPN SSWAN OPENSSL_EC OPENSSL_EXE XUPNPD MINIDLNA FIREFLY FFMPEG_NEW TRANSMISSION TRANSMISSION_WEB_CONTROL CURL GDUT_DRCOM DOGCOM MINIEAP NJIT_CLIENT NAPT66 SOFTETHERVPN_SERVER SOFTETHERVPN_CLIENT SOFTETHERVPN_CMD VLMCSD TTYD LRZSZ HTOP NANO IPERF3 MTR SOCAT SRELAY MENTOHUST SCUTCLIENT FRPC FRPS TUNSAFE WIREGUARD SHADOWSOCKS XRAY V2RAY TROJAN SSOBFS ADBYBY KOOLPROXY SMARTDNS SMARTDNSBIN ADGUARDHOME CADDY CADDYBIN WYY WYYBIN ZEROTIER ALIDDNS DDNSTO ALDRIVER MENTOHUST SQM DNSFORWARDER CLOUDFLAREDDNS NVPPROXY DDNS_SSL SSSERVER NPC KUMASOCKS IPT2SOCKS MICROSOCKS; do
+              sed -i "s/CONFIG_FIRMWARE_INCLUDE_${MOD}=y/CONFIG_FIRMWARE_INCLUDE_${MOD}=n/" $m.config; done; \
           fi; done
           cd $work_dir
           for m in $targets; do if [ -f $m.config ]; then echo "拷贝 $m.config"; cp -f ./$m.config $config_dir/$m.config; fi; done; \
