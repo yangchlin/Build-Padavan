@@ -101,7 +101,7 @@ jobs:
           echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> $m.config #网易云解锁GO版本执行文件（2M多）注意固件超大小
           ##内网穿透服务##
           echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> $m.config #zerotier ~1.3M
-          echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> $m.config #aliddns
+          echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> $m.config #aliddns
           echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=n" >> $m.config #ddnsto  ~0.5M
           echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=n" >> $m.config  #ALDRIVER  ~3m
           echo "CONFIG_FIRMWARE_INCLUDE_SQM=n" >> $m.config #SQM
