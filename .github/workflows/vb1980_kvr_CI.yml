@@ -15,7 +15,7 @@ env:
   images_dir: /opt/images                                       # 固件目录
   work_dir: /opt/padavan/trunk                                  # 工作目录
   config_dir: /opt/padavan/trunk/configs/templates              # 设备模板目录
-  src_git: https://github.com/yangchlin/Padavan.git             # 源码地址
+  src_git: https://github.com/vb1980/Padavan-KVR.git             # 源码地址
 
 jobs:
   build:
