@@ -103,7 +103,7 @@ jobs:
           echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> $m.config #zerotier ~1.3M
           echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> $m.config #aliddns
           echo "CONFIG_FIRMWARE_INCLUDE_FRPS=y" >> $m.config #内网穿透frps
-          echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> $m.config #内网穿透frpc
+          echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> $m.config #内网穿透frpc
           echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=n" >> $m.config #ddnsto  ~0.5M
           echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=n" >> $m.config  #ALDRIVER  ~3m
           echo "CONFIG_FIRMWARE_INCLUDE_SQM=n" >> $m.config #SQM
