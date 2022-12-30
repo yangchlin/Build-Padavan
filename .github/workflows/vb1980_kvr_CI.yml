@@ -84,7 +84,7 @@ jobs:
           echo "CONFIG_FIRMWARE_INCLUDE_MICROSOCKS=n" >> $m.config
           echo "CONFIG_FIRMWARE_INCLUDE_NPC=n" >> $m.config #npc
           ##广告管理##
-          echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >> $m.config #adbyby plus+
+          echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> $m.config #adbyby plus+
           echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >> $m.config #KP广告过滤
           ##DNS服务##
           echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> $m.config #smartdns
@@ -100,7 +100,7 @@ jobs:
           echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> $m.config #网易云解锁
           echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> $m.config #网易云解锁GO版本执行文件（2M多）注意固件超大小
           ##内网穿透服务##
-          echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> $m.config #zerotier ~1.3M
+          echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> $m.config #zerotier ~1.3M
           echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> $m.config #aliddns
           echo "CONFIG_FIRMWARE_INCLUDE_FRPS=y" >> $m.config #内网穿透frps
           echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> $m.config #内网穿透frpc
