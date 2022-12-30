@@ -89,7 +89,7 @@ jobs:
           ##DNS服务##
           echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> $m.config #smartdns
           echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> $m.config #smartdns二进制文件
-          echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> $m.config #adg DNS去AD
+          echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=y" >> $m.config #adg DNS去AD
           echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> $m.config #DNSFORWARDER
           echo "CONFIG_FIRMWARE_INCLUDE_CLOUDFLAREDDNS=n" >> $m.config #CLOUDFLAREDDNS
           echo "CONFIG_FIRMWARE_INCLUDE_NVPPROXY=n" >> $m.config #NVPPROXY
