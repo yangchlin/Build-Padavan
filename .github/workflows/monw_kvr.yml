@@ -8,8 +8,8 @@ on:
     inputs:
 #  schedule:                                                    # 自动编译
 #    - cron: 0 19 * * *                                         # 每天国际时间19点，北京时间凌晨3点执行
-  #watch:                                                        # 监视操作
-    #types: [started]                                            # 点击 Star 之后
+  watch:                                                        # 监视操作
+    types: [started]                                            # 点击 Star 之后
 env:
   build_dir: /opt/padavan                                       # 源码目录
   images_dir: /opt/images                                       # 固件目录
@@ -44,7 +44,7 @@ jobs:
       - name: Prepare environment      # 准备编译环境
         run: |                         # 安装依赖包
           sudo apt update
-          sudo apt install libtool-bin gperf python3-docutils autopoint gettext
+          sudo apt install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot kmod cpio git python3-docutils gettext automake autopoint texinfo build-essential help2man pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget libc-dev-bin
           sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
       - name: Clone source code
         run: |                         # 克隆源码
@@ -114,7 +114,7 @@ jobs:
         run: |                         # 执行构建固件
           cd $work_dir
           for m in $targets; do fakeroot ./build_firmware_ci $m; \
-          if [ $? = 0 ]; then cp -f images/*.trx $images_dir/Hanwckf_${m}_$(date +%Y%m%d).trx; else exit 1; fi; \
+          if [ $? = 0 ]; then cp -f images/*.trx $images_dir/monw_${m}_$(date +%Y%m%d).trx; else exit 1; fi; \
           ./clear_tree_simple >/dev/null 2>&1; done
       - name: Upload images to Artifact
         if: ${{ success() }}
